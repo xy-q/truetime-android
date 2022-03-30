@@ -90,7 +90,7 @@ public class SntpClient {
         int serverResponseDelayMax,
         int timeoutInMillis
     )
-        throws IOException {
+        throws Exception {
 
         DatagramSocket socket = null;
 
