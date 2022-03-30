@@ -45,7 +45,7 @@ public class TrueTime {
         return INSTANCE;
     }
 
-    public void initialize() throws IOException {
+    public void initialize() throws Exception {
         initialize(_ntpHost);
     }
 
@@ -119,7 +119,7 @@ public class TrueTime {
 
     // -----------------------------------------------------------------------------------
 
-    protected void initialize(String ntpHost) throws IOException {
+    protected void initialize(String ntpHost) throws Exception {
         if (isInitialized()) {
             TrueLog.i(TAG, "---- TrueTime already initialized from previous boot/init");
             return;
@@ -129,7 +129,7 @@ public class TrueTime {
         saveTrueTimeInfoToDisk();
     }
 
-    long[] requestTime(String ntpHost) throws IOException {
+    long[] requestTime(String ntpHost) throws Exception {
         return SNTP_CLIENT.requestTime(ntpHost,
             _rootDelayMax,
             _rootDispersionMax,

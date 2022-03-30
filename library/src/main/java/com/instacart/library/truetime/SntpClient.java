@@ -18,6 +18,9 @@ package com.instacart.library.truetime;
  */
 
 import android.os.SystemClock;
+import android.system.ErrnoException;
+import android.system.OsConstants;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -90,11 +93,15 @@ public class SntpClient {
         int serverResponseDelayMax,
         int timeoutInMillis
     )
-        throws Exception {
+            throws IOException, ErrnoException {
 
         DatagramSocket socket = null;
 
         try {
+
+            if (true){
+                throw new ErrnoException("test error", OsConstants.EACCES);
+            }
 
             byte[] buffer = new byte[NTP_PACKET_SIZE];
             InetAddress address = InetAddress.getByName(ntpHost);
